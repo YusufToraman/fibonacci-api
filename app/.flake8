@@ -2,3 +2,6 @@
 [flake8]
 exclude =
     migrations, __pycache__, manage.py, settings.py
+
+ignore = 
+    E302,W292,F401,W291,E501

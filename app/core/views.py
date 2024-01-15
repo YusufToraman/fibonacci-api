@@ -20,10 +20,19 @@ class FibonacciView(APIView):
         """Get request to calculate the n-th Fibonacci number."""
 
         # Get the redis instance from the factory
-        redis_instance = CacheFactory.get_cache('redis', host='redis', port=6379, db=0) # cache type and kwargs => dict
+        redis_instance = CacheFactory.get_cache(
+            'redis', 
+            host='redis', 
+            port=6379, 
+            db=0
+        ) # cache type and kwargs => dict
+
         serializer = FibonacciSerializer(data = request.query_params)
         if not serializer.is_valid():
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                    serializer.errors, 
+                    status=status.HTTP_400_BAD_REQUEST
+            )
         
         # Get the validated data
         n = serializer.validated_data['n']
