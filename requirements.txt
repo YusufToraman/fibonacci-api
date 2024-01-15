@@ -1,2 +1,5 @@
 djangorestframework==3.14.0
 Django==4.2.6
+drf-spectacular==0.26.5
+django-redis==5.4.0
+redis==5.0.1
