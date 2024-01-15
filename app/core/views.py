@@ -25,15 +25,15 @@ class FibonacciView(APIView):
             host='redis', 
             port=6379, 
             db=0
-        ) # cache type and kwargs => dict
+        )  # cache type and kwargs => dict
 
         serializer = FibonacciSerializer(data = request.query_params)
         if not serializer.is_valid():
             return Response(
-                    serializer.errors, 
-                    status=status.HTTP_400_BAD_REQUEST
+                serializer.errors, 
+                status=status.HTTP_400_BAD_REQUEST
             )
-        
+
         # Get the validated data
         n = serializer.validated_data['n']
         cache_key = f'fib_{n}'
@@ -45,5 +45,5 @@ class FibonacciView(APIView):
 
         res = fibonacci(n)
         # Set the value in the cache
-        redis_instance.set(cache_key, str(res), timeout=60*60*24) # 1 day cache
+        redis_instance.set(cache_key, str(res), timeout=60 * 60 * 24)  # 1 day cache
         return Response({'result': int(res)}, status=status.HTTP_200_OK)
