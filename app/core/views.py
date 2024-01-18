@@ -47,7 +47,7 @@ class FibonacciView(APIView):
         # Set the value in the cache
         redis_instance.set(cache_key, str(res), timeout=60 * 60 * 24)  # 1 day cache
         return Response({'result': int(res)}, status=status.HTTP_200_OK)
-    
+
 
 class DeploymentUpdate(APIView):
     """Deployment update view."""
