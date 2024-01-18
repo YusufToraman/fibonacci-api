@@ -5,7 +5,6 @@ class CacheFactory:
     def get_cache(cache_type, host, port, db=1):
         # There is 1 cache type yet, but there could be more than 1 cache type
         if cache_type == 'redis':
-            print("ENIK", host, port, db)
             return RedisCache(host, port, db)
         else:
             raise ValueError(f'Unknown cache type: {cache_type}')
