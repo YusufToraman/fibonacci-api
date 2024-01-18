@@ -25,7 +25,7 @@ class FibonacciView(APIView):
             host='redis', 
             port=6379, 
             db=0
-        )  # cache type and kwargs => dict
+        )  # cache type and parameters
 
         serializer = FibonacciSerializer(data = request.query_params)
         if not serializer.is_valid():

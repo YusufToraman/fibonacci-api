@@ -10,8 +10,11 @@ services:
       - "8000:8000"
     volumes:
       - ./app:/app
+      - dev-static-data:/vol/web
     command: >
       sh -c "python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DEBUG=1
     depends_on:
       - redis
   redis:
@@ -23,4 +26,4 @@ services:
 
 volumes:
   redis-data:
-      
+  dev-static-data:

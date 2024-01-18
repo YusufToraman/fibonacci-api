@@ -3,3 +3,4 @@ Django==4.2.6
 drf-spectacular==0.26.5
 django-redis==5.4.0
 redis==5.0.1
+uwsgi>=2.0.19<2.1
