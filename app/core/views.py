@@ -40,7 +40,7 @@ class FibonacciView(APIView):
         ).check_cache()
 
         return Response({'result': int(res)}, status=status.HTTP_200_OK)
-    
+
 
 class DeploymentUpdate(APIView):
     """Deployment update view."""

@@ -10,4 +10,3 @@ class Fibonacci(OperationInterface):
         for _ in range(self.n):
             a, b = b, a + b
         return a
-        

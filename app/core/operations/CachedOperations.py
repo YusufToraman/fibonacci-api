@@ -9,7 +9,7 @@ class CachedOperations:
         self.n = n
         self.cache_key = cache_key
         self.operation_type = operation_type
-    
+
     def check_cache(self):
         # Check if the value is in the cache
         if self.cache.get(self.cache_key):
