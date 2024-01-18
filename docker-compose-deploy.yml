@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+    restart: always
+    volumes: 
+      - static-data:/vol/web
+    environment:
+      - SECRET_KEY=${DJANGO_SECRET_KEY}
+      - ALLOWED_HOSTS=${DJANGO_ALLOWED_HOSTS}
+    depends_on:
+      - redis
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
+  proxy:
+    build:
+      context: ./proxy
+    restart: always
+    depends_on:
+      - app
+    ports:
+      - 80:8000
+    volumes:
+      - static-data:/vol/static
+
+volumes:
+  redis-data:
+  static-data:
